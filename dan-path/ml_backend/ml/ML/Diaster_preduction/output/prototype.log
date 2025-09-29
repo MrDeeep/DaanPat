@@ -1,0 +1,18 @@
+2025-09-29 17:14:02,602 - INFO - Environment setup complete.
+2025-09-29 17:14:05,424 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-09-29 17:14:05,428 - ERROR - Could not initialize Earth Engine. Please follow the setup steps.
+2025-09-29 17:14:05,428 - ERROR - 1. Sign up at https://signup.earthengine.google.com/
+2025-09-29 17:14:05,430 - ERROR - 2. Run 'pip install earthengine-api google-api-python-client'
+2025-09-29 17:14:05,430 - ERROR - 3. Run 'earthengine authenticate' in your terminal.
+2025-09-29 17:15:36,844 - INFO - Environment setup complete.
+2025-09-29 17:15:39,004 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-09-29 17:15:39,006 - ERROR - Could not initialize Earth Engine. Please follow the setup steps.
+2025-09-29 17:15:39,006 - ERROR - 1. Sign up at https://signup.earthengine.google.com/
+2025-09-29 17:15:39,006 - ERROR - 2. Run 'pip install earthengine-api google-api-python-client'
+2025-09-29 17:15:39,006 - ERROR - 3. Run 'earthengine authenticate' in your terminal.
+2025-09-29 17:28:55,205 - INFO - Environment setup complete.
+2025-09-29 17:28:58,703 - WARNING - Encountered 403 Forbidden with reason "PERMISSION_DENIED"
+2025-09-29 17:28:58,703 - ERROR - Could not initialize Earth Engine. Please follow the setup steps.
+2025-09-29 17:28:58,703 - ERROR - 1. Sign up at https://signup.earthengine.google.com/
+2025-09-29 17:28:58,703 - ERROR - 2. Run 'pip install earthengine-api google-api-python-client'
+2025-09-29 17:28:58,705 - ERROR - 3. Run 'earthengine authenticate' in your terminal.

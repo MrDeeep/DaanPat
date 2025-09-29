@@ -1,0 +1,38 @@
+2025-09-29 15:13:32,190 - INFO - Environment setup complete.
+2025-09-29 15:13:32,190 - INFO - --- Starting Disaster Prediction Prototype ---
+2025-09-29 15:13:32,190 - INFO - Downloading population data from https://data.worldpop.org/GIS/Population/Global_2000_2020/2020/IND/ind_ppp_2020_1km_Aggregated_UNadj.tif...
+2025-09-29 15:13:33,697 - ERROR - Failed to download data: 404 Client Error: Not Found for url: https://data.worldpop.org/GIS/Population/Global_2000_2020/2020/IND/ind_ppp_2020_1km_Aggregated_UNadj.tif
+2025-09-29 15:16:38,851 - INFO - Environment setup complete.
+2025-09-29 15:16:38,851 - INFO - --- Starting Disaster Prediction Prototype ---
+2025-09-29 15:16:38,851 - INFO - Downloading population data from https://data.worldpop.org/GIS/Population/Global_2000_2020_1km/2020/IND/ind_ppp_2020_UNadj_1km.tif...
+2025-09-29 15:16:40,923 - ERROR - Failed to download data: 404 Client Error: Not Found for url: https://data.worldpop.org/GIS/Population/Global_2000_2020_1km/2020/IND/ind_ppp_2020_UNadj_1km.tif
+2025-09-29 15:21:09,203 - INFO - Environment setup complete.
+2025-09-29 15:21:09,204 - INFO - --- Starting Disaster Prediction Prototype ---
+2025-09-29 15:21:09,204 - INFO - Downloading population data from https://data.worldpop.org/GIS/Population/Global_2000_2020_1km/2020/IND/ind_ppp_2020_UNadj_1km.tif...
+2025-09-29 15:21:10,179 - ERROR - Failed to download data: 404 Client Error: Not Found for url: https://data.worldpop.org/GIS/Population/Global_2000_2020_1km/2020/IND/ind_ppp_2020_UNadj_1km.tif
+2025-09-29 15:21:34,615 - INFO - Environment setup complete.
+2025-09-29 15:21:34,616 - INFO - --- Starting Disaster Prediction Prototype ---
+2025-09-29 15:21:34,616 - INFO - Downloading population data from https://data.worldpop.org/GIS/Population/Global_2000_2020_1km/2020/IND/ind_ppp_2020_UNadj_1km.tif...
+2025-09-29 15:21:35,627 - ERROR - Failed to download data: 404 Client Error: Not Found for url: https://data.worldpop.org/GIS/Population/Global_2000_2020_1km/2020/IND/ind_ppp_2020_UNadj_1km.tif
+2025-09-29 15:22:46,128 - INFO - Environment setup complete.
+2025-09-29 15:22:46,129 - INFO - --- Starting Disaster Prediction Prototype ---
+2025-09-29 15:22:46,129 - INFO - Downloading population data from https://hub.worldpop.org/files/wpgp_v4_res_30_sec_ppp_2020_cnst_UNadj_IND.tif...
+2025-09-29 15:22:47,620 - ERROR - Failed to download data: 404 Client Error: Not Found for url: https://hub.worldpop.org/files/wpgp_v4_res_30_sec_ppp_2020_cnst_UNadj_IND.tif
+2025-09-29 16:09:21,875 - INFO - Environment setup complete.
+2025-09-29 16:09:21,886 - WARNING - Compute Engine Metadata server unavailable on attempt 1 of 3. Reason: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-09-29 16:09:22,897 - WARNING - Compute Engine Metadata server unavailable on attempt 2 of 3. Reason: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-09-29 16:09:24,828 - WARNING - Compute Engine Metadata server unavailable on attempt 3 of 3. Reason: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-09-29 16:09:24,828 - WARNING - Authentication failed using Compute Engine authentication due to unavailable metadata server.
+2025-09-29 16:09:24,828 - ERROR - Could not initialize Earth Engine. Please follow the setup steps.
+2025-09-29 16:09:24,828 - ERROR - 1. Sign up at https://signup.earthengine.google.com/
+2025-09-29 16:09:24,828 - ERROR - 2. Run 'pip install earthengine-api google-api-python-client'
+2025-09-29 16:09:24,828 - ERROR - 3. Run 'earthengine authenticate' in your terminal.
+2025-09-29 17:10:19,681 - INFO - Environment setup complete.
+2025-09-29 17:10:19,692 - WARNING - Compute Engine Metadata server unavailable on attempt 1 of 3. Reason: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-09-29 17:10:20,798 - WARNING - Compute Engine Metadata server unavailable on attempt 2 of 3. Reason: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-09-29 17:10:22,899 - WARNING - Compute Engine Metadata server unavailable on attempt 3 of 3. Reason: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-09-29 17:10:22,901 - WARNING - Authentication failed using Compute Engine authentication due to unavailable metadata server.
+2025-09-29 17:10:22,901 - ERROR - Could not initialize Earth Engine. Please follow the setup steps.
+2025-09-29 17:10:22,901 - ERROR - 1. Sign up at https://signup.earthengine.google.com/
+2025-09-29 17:10:22,901 - ERROR - 2. Run 'pip install earthengine-api google-api-python-client'
+2025-09-29 17:10:22,901 - ERROR - 3. Run 'earthengine authenticate' in your terminal.
