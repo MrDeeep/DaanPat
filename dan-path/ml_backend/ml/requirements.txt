@@ -1,0 +1,11 @@
+nudenet==3.4.2
+tensorflow>=2.5
+opencv-python
+pillow
+numpy
+pandas
+torch 
+rasterio 
+geopandas 
+folium 
+shapely
