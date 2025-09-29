@@ -36,6 +36,63 @@ const dummyMessages = [
     lastMessage: "Loved your recent story!",
     time: "2d ago",
   },
+  // Note: Entries kept as-is, assuming this is for scroll testing.
+  {
+    id: 5,
+    user: "Erica Foster", // Changed to have unique users for clarity
+    avatar: "https://i.pravatar.cc/40?u=e5",
+    lastMessage: "Great job on the presentation!",
+    time: "2d ago",
+  },
+  {
+    id: 6,
+    user: "Frank Green", // Changed to have unique users for clarity
+    avatar: "https://i.pravatar.cc/40?u=f6",
+    lastMessage: "Don't forget the deadline.",
+    time: "2d ago",
+  },
+  {
+    id: 7,
+    user: "Grace Hill", // Changed to have unique users for clarity
+    avatar: "https://i.pravatar.cc/40?u=g7",
+    lastMessage: "See you next week!",
+    time: "3d ago",
+  },
+  {
+    id: 8,
+    user: "Henry Jones", // Changed to have unique users for clarity
+    avatar: "https://i.pravatar.cc/40?u=h8",
+    lastMessage: "Thanks for the help.",
+    time: "3d ago",
+  },
+  {
+    id: 9,
+    user: "Ivy King", // Changed to have unique users for clarity
+    avatar: "https://i.pravatar.cc/40?u=i9",
+    lastMessage: "I'll send the files shortly.",
+    time: "3d ago",
+  },
+  {
+    id: 10,
+    user: "Jack Lee", // Changed to have unique users for clarity
+    avatar: "https://i.pravatar.cc/40?u=j10",
+    lastMessage: "Can you review this?",
+    time: "4d ago",
+  },
+  {
+    id: 11,
+    user: "Karen Miller", // Changed to have unique users for clarity
+    avatar: "https://i.pravatar.cc/40?u=k11",
+    lastMessage: "Got it, thanks!",
+    time: "4d ago",
+  },
+  {
+    id: 12,
+    user: "Leo Nelson", // Changed to have unique users for clarity
+    avatar: "https://i.pravatar.cc/40?u=l12",
+    lastMessage: "Working on it now.",
+    time: "4d ago",
+  },
 ];
 
 // =================================================================
@@ -59,6 +116,7 @@ function ChatView({ userId }) {
   };
 
   useEffect(() => {
+    // Scroll to bottom whenever messages update
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
@@ -66,10 +124,10 @@ function ChatView({ userId }) {
   useEffect(() => {
     // Reset dummy messages when switching chat
     setMessages([
-        { from: "user", text: `I am user ${userId}. What's up?` },
+        { from: "user", text: `${user ? user.user : 'User'} says: What's up?` },
         { from: "me", text: "Just testing this new UI!" },
     ]);
-  }, [userId]);
+  }, [userId, user]);
 
 
   return (
@@ -83,11 +141,24 @@ function ChatView({ userId }) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
              </svg>
           </Link>
+
+          <div className="relative">
+            {user && ( // Only render Image if user data is found
+              <Image
+                src={user.avatar}
+                alt={user.user}
+                width={50}
+                height={50}
+                className="rounded-full border-2 border-indigo-500 object-cover"
+              />
+            )}
+          </div>
+
           <h1 className="text-xl font-bold">{user ? user.user : `Chat with User ${userId}`}</h1>
         </div>
       </header>
 
-      {/* Messages Area */}
+      {/* Messages Area - scrollbar-hide is already present here */}
       <div className="flex-1 overflow-y-auto p-4 space-y-3 scrollbar-hide">
         {messages.map((msg, idx) => (
           <div
@@ -101,6 +172,7 @@ function ChatView({ userId }) {
             {msg.text}
           </div>
         ))}
+        {/* Scroll anchor */}
         <div ref={messagesEndRef} />
       </div>
 
@@ -136,26 +208,28 @@ export default function MessagesLayout() {
 
   return (
     // Outer container for centering and defining max width
-    <div className="min-h-screen bg-neutral-950 text-white flex justify-center p-4">
+    <div className="min-h-[91vh] bg-neutral-950 text-white flex justify-center p-4">
       <div 
         className="flex w-full max-w-7xl border border-neutral-800 rounded-xl shadow-2xl overflow-hidden" 
         // Define a fixed height for the chat area on desktop
-        style={{ height: 'calc(100vh - 2rem)' }}
+        style={{ height: 'calc(100vh - 6rem)' }}
       >
 
         {/* ========================================================== */}
         {/* MESSAGES LIST (Left Sidebar) */}
         {/* ========================================================== */}
         <div
-          className={`h-full overflow-y-auto ${
-            // On desktop, take 1/3 width. On mobile, take full width if no chat is selected.
-            selectedId ? "md:w-1/3" : "w-full"
-          } 
-          ${selectedId ? "hidden md:block" : "w-full"}`} // Hide list on mobile if a chat is selected
+          // ⚠️ FIX 1: The outer div handles the overall height and scrolling.
+          // Keep: h-full, overflow-y-auto, scrollbar-hide
+          className={`h-full overflow-y-auto scrollbar-hide w-full md:w-1/3 min-w-0 flex-shrink-0 ${
+            selectedId ? "hidden md:block" : "block"
+          }`} // Hide list on mobile if a chat is selected
         >
           <div className="p-4">
             <h1 className="text-3xl font-bold mb-6">Messages</h1>
-            <div className="flex flex-col space-y-2">
+            {/* 🏆 FIX 2: Remove scrolling classes from this inner div. 
+            The outer list container will handle the scroll for the content inside. */}
+            <div className="flex flex-col space-y-2"> 
               {dummyMessages.map((msg) => (
                 <Link 
                   key={msg.id} 
@@ -203,7 +277,7 @@ export default function MessagesLayout() {
           </div>
         ) : (
           // Show a placeholder on desktop when no chat is selected
-          <div className="hidden md:flex w-2/3 items-center justify-center text-gray-500 text-xl bg-neutral-900">
+          <div className="hidden md:flex flex-1 items-center justify-center text-gray-500 text-xl bg-neutral-900">
             Select a message to start chatting
           </div>
         )}

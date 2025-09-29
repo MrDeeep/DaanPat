@@ -1,6 +1,7 @@
 "use client";
 // import Link from "next/link"; // Removed to fix the import error
 import React from "react";
+import Link from "next/link";
 
 const LogIn = () => {
   const handleSubmit = (e) => {
@@ -77,12 +78,12 @@ const LogIn = () => {
           {/* Forgot Password Link */}
           <div className="flex items-center justify-between">
             <div className="text-sm">
-              <a
-                href="#"
+              <Link
+                href="/forgot-password"
                 className="font-medium text-indigo-400 hover:text-indigo-300 transition"
               >
                 Forgot your password?
-              </a>
+              </Link>
             </div>
           </div>
 

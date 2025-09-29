@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,7 +45,6 @@ const XIcon = (props) => (
 // Navigation links
 const socialNavigation = [
   { name: "Feed", href: "/", icon: HomeIcon },
-  
   { name: "Messages", href: "/messages", icon: MessageSquareIcon },
   { name: "Notifications", href: "/notifications", icon: BellIcon },
 ];
@@ -69,13 +68,34 @@ const NavItem = ({ item, currentPath }) => {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const pathname = usePathname();
+
+  const user = {
+    photoURL: "https://i.pravatar.cc/100?u=user",
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Search:", searchQuery);
-    // Here you can integrate search functionality
   };
+
+  const handleSignOut = () => {
+    console.log("User signed out");
+    setOpen(false);
+  };
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <nav className="sticky top-0 z-50 bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] shadow-md text-white">
@@ -108,16 +128,65 @@ const Navbar = () => {
             <NavItem key={item.name} item={item} currentPath={pathname} />
           ))}
 
-          {/* User Profile Avatar */}
-          <Link href="/profile" className="ml-4">
-            <Image
-              width={36}
-              height={36}
-              src="https://i.pravatar.cc/40"
-              alt="User"
-              className="rounded-full border-2 border-indigo-500 hover:scale-105 transition object-cover"
-            />
-          </Link>
+          {/* User Profile + Dropdown */}
+          {user && (
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setOpen(!open)}
+                className="rounded-full focus:outline-none"
+              >
+                <Image
+                  src={user.photoURL}
+                  width={36}
+                  height={36}
+                  alt="avatar"
+                  className="rounded-full border-2 border-indigo-500 object-cover"
+                />
+              </button>
+
+              {open && (
+                <div className="absolute right-0 mt-3 w-56 rounded-xl bg-neutral-800/90 backdrop-blur-lg shadow-xl border border-gray-700 overflow-hidden">
+                  <ul className="py-2 text-sm text-gray-200">
+                    <li>
+                      <Link
+                        href="/profile"
+                        className="block px-4 py-2 hover:bg-neutral-700 transition"
+                        onClick={() => setOpen(false)}
+                      >
+                        My Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/settings"
+                        className="block px-4 py-2 hover:bg-neutral-700 transition"
+                        onClick={() => setOpen(false)}
+                      >
+                        Settings
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/help"
+                        className="block px-4 py-2 hover:bg-neutral-700 transition"
+                        onClick={() => setOpen(false)}
+                      >
+                        Help
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        onClick={handleSignOut}
+                        className="w-full text-left px-4 py-2 text-red-400 hover:bg-neutral-700 transition"
+                      >
+                        Sign out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -146,6 +215,22 @@ const Navbar = () => {
             </div>
           </form>
 
+          {/* Mobile Profile */}
+          <Link
+            href="/profile"
+            className="flex items-center gap-2 px-4 py-2 rounded hover:bg-gray-800"
+            onClick={() => setIsOpen(false)}
+          >
+            <Image
+              width={36}
+              height={36}
+              src="https://i.pravatar.cc/40"
+              alt="User"
+              className="rounded-full border-2 border-indigo-500 object-cover"
+            />
+            <span>Profile</span>
+          </Link>
+
           {socialNavigation.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -163,22 +248,6 @@ const Navbar = () => {
               </Link>
             );
           })}
-
-          {/* Mobile Profile */}
-          <Link
-            href="/profile"
-            className="flex items-center gap-2 px-4 py-2 rounded hover:bg-gray-800"
-            onClick={() => setIsOpen(false)}
-          >
-            <Image
-              width={36}
-              height={36}
-              src="https://i.pravatar.cc/40"
-              alt="User"
-              className="rounded-full border-2 border-indigo-500 hover:scale-105 transition object-cover"
-            />
-            <span>Profile</span>
-          </Link>
         </div>
       )}
     </nav>
